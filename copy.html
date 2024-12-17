@@ -1,0 +1,90 @@
+<body class="w-full flex justify-center items-center h-screen bg-blue-300">
+    <div class="bg-purple-400 rounded-3xl p-4">
+        <header class="my-4">
+            <h1 class="text-center text-4xl p-4">7DaysOfCode</h1>
+            <h2 class="text-center p-2">Disponha a data de aniversário das pessoas que são importantes para você!</h2>
+        </header>
+        <div class="form" id="form">
+            <form action="/salvar" method="post">
+                <h1 class="text-3xl text-center p-2 bg-blue-700 my-4 rounded-2xl">Aniversários de 2024</h1>
+                <div class="p-4 inline my-4">
+                    <label for="form-name">Nome: </label>
+                    <input type="text" name="nome" id="inputnome" class="h-10 border border-black rounded-lg">
+                    <label for="form--data">Data de nascimento</label>
+                    <input type="text" name="data" id="inputdata" class="h-10 border border-black rounded-lg">
+                </div>
+                <div class="flex justify-center p-4 mt-4">
+                    <button id="save" type="submit" class="rounded-xl w-1/2 bg-blue-700 p-2 text-2xl">Salvar</button>
+                </div>
+            </form>
+            <div class="flex flex-col gap-2">
+                <div class="grid grid-cols-2 gap-4 w-full p-2">
+                    <h1 class="text-center">Nome: </h1>
+                    <h1 class="text-center">Data de nascimento: </h1>
+                </div>
+                <div class="grid grid-cols-2 gap-4 p-2" id="birthday-list">
+                    <div class="text-center">
+                        <span id="table-nome">${Birthday.nome}</span>
+                    </div>
+                    <div class="text-center">
+                        <span id="table-data">${Birthday.data}</span>
+                        <span id="table-id" class="hidden">${Birthday.id}</span>
+                        <div class="grid grid-cols-2">
+                            <form action="/deletar" method="post">
+                                <span class="border border-black">
+                                    <button data-id="${Birthday.id}">Deletar</button>
+                                </span>
+                            </form>
+                            <span class="border border-black">
+                                <button data-id="${Birthday.id}" id="Edit">Editar</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-black/40 w-full h-full fixed top-0 left-0 z-[99] items-center justify-center hidden"
+                id="Editcenter">
+                <div class="bg-white p-5 rounded-md min-w-[90%] md:min-w-[600px] flex flex-col max-h-[90%]">
+                    <h2 class="text-center font-bold text-2xl mb-2">Modo edição</h2>
+                    <div class=" justify-center hidden" id="Editcenter">
+                        <div class="w-10 h-10">
+                            <label for="form-name">Nome: </label>
+                            <input type="text" name="nome" id="inputnome" class="h-10 border border-black rounded-lg">
+                            <label for="form--data">Data de nascimento</label>
+                            <input type="text" name="data" id="inputdata" class="h-10 border border-black rounded-lg">
+                        </div>
+                    </div>
+                    <!-- Área de itens do carrinho com rolagem e limite de altura -->
+
+
+
+                    <!-- Botões de ação fixos no rodapé do modal -->
+                    <div class="flex items-center justify-between">
+                        <button id="close-modal-btn">Fechar</button>
+                        <button id="checkout-btn" class="bg-green-500 text-white px-4 py-1 rounded">
+                            Finalizar pedido
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <script src="./index.js"></script>
+
+
+</body>
+
+
+
+<span id="table-data">${Birthday.data}</span>
+
+<div class="grid grid-cols-2">
+    <form action="/deletar" method="post">
+        <input type="hidden" name="id" value="${Birthday.id}">
+        <span class="border border-black">
+            <button type="submit">Deletar</button>
+        </span>
+    </form>
+    <span class="border border-black">
+        <button data-id="${Birthday.id}" id="Edit">Editar</button>
+    </span>
+</div>
